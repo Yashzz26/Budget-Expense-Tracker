@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartSpend - Personal Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+   <body>
+    <header>
+      <h1>💰SmartSpend</h1>
+      <p>Your Personalized Expense Tracker</p>
+    </header>
+
+    <main class="container">
+      <!-- Add Expense Form -->
+      <section class="add-expense">
+        <h2>Add New Expense</h2>
+        <form id="expenseForm">
+          <input type="number" placeholder="Amount (₹)" required />
+          <input type="date" required />
+          <select required>
+            <option value="">Select Category</option>
+            <option value="Food">Food</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Stationary">Stationary</option>
+            <option value="Travel">Travel</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="addNew">➕ Add New Category</option>
+          </select>
+          <input type="text" placeholder="Description (optional)" />
+          <button type="submit">Add Expense</button>
+        </form>
+      </section>
+
+      <section class="filters">
+        <h2>Filter Expenses</h2>
+        <label>
+          Category:
+          <select>
+            <option value="All">All</option>
+            <option value="Food">Food</option>
+            <option value="Shopping">Shopping</option>
+          </select>
+        </label>
+        <label>
+          Time Period:
+          <select>
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Custom">Custom</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="expense-list">
+        <h2>Expense History</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Amount (₹)</th>
+              <th>Category</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="charts">
+        <h2>Visual Insights</h2>
+        <canvas id="categoryChart"></canvas>
+        <canvas id="trendChart"></canvas>
+        <canvas id="pieChart"></canvas>
+      </section>
+
+      <section class="insights">
+        <h2>Insights Panel</h2>
+        <ul>
+          <li>Total Spend: ₹ <span id="totalSpend">0</span></li>
+          <li>Highest Category: <span id="highestCategory">-</span></li>
+          <li>Avg Weekly Spend: ₹ <span id="avgSpend">0</span></li>
+          <li>Suggestion: <span id="suggestion">-</span></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 SmartSpend. Track smart, spend smarter.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+/* --- Global Resets & Font Imports --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Body & General Layout --- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+  line-height: 1.6;
+  padding: 2.5rem;
+}
+
+.container {
+  max-width: 68rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* --- Header --- */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+/* --- Section & Card Styling --- */
+section {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+}
+
+section h2 {
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #343a40;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 1rem;
+}
+
+/* --- Form Elements --- */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+form input,
+form select,
+form button {
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  flex: 1 1 15rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s ease-in-out;
+}
+
+form input,
+form select {
+  background-color: #f8f9fa; /* Slight contrast for input fields */
+  border: 1px solid #ced4da;
+  color: #495057;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: #007bff; /* Clear blue focus color */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+form button {
+  background-color: #007bff; /* Primary action blue */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* --- Filters --- */
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.filters h2 {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.filters label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.filters select {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+}
+
+/* --- Expense Table --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+th {
+  color: #6c757d;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #f8f9fa;
+}
+
+/* Zebra striping for better readability */
+tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+}
+
+/* --- Charts --- */
+.charts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+.charts canvas {
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+  padding: 1rem;
+}
+
+#categoryChart, #trendChart {
+  min-height: 350px;
+}
+
+#pieChart {
+  max-height: 300px;
+}
+
+/* --- Insights Panel --- */
+.insights ul {
+  list-style: none;
+  padding: 0;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden; /* To contain the rounded corners */
+}
+
+.insights li {
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.insights li span {
+    font-weight: 500;
+    color: #343a40;
+}
+
+/* Zebra striping for insights */
+.insights li:nth-of-type(even) {
+    background-color: #f8f9fa;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .container {
+    gap: 2rem;
+  }
+  
+  section {
+    padding: 1.5rem;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  form {
+    flex-direction: column;
+  }
+}
