@@ -159,6 +159,20 @@ tbody tr:nth-of-type(even) {
     background-color: #f8f9fa;
 }
 
+/* --- UI/UX Polish: Animation for new table rows --- */
+@keyframes highlight-row {
+  from {
+    background-color: #d1e7dd; /* A light green color */
+  }
+  to {
+    background-color: initial;
+  }
+}
+
+.highlighted-row {
+  animation: highlight-row 2s ease-out;
+}
+
 /* --- Charts --- */
 .charts {
     display: grid;

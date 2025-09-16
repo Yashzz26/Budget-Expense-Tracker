@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ".filters select:last-of-type"
   );
 
+  // Selector for the success message (from previous UI/UX polish update)
+  const successMessage = document.getElementById("successMessage");
+
   // Insights Panel
   const totalSpendEl = document.getElementById("totalSpend");
   const highestCategoryEl = document.getElementById("highestCategory");
@@ -53,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    filteredExpenses.forEach((expense) => {
+    filteredExpenses.forEach((expense, index) => {
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${new Date(expense.date).toLocaleDateString()}</td>
@@ -62,6 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <td>${expense.description}</td>
       `;
       expenseTableBody.appendChild(row);
+
+      // Apply the highlight class to the newest expense
+      if (index === 0) {
+        row.classList.add("highlighted-row");
+      }
     });
   };
 
@@ -201,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  /*  Populates filter dropdowns with unique categories  */
+  /* Populates filter dropdowns with unique categories  */
   const populateFilterCategories = () => {
     const categories = [...new Set(expenses.map((exp) => exp.category))];
     filterCategorySelect.innerHTML = '<option value="All">All</option>'; // Reset
@@ -251,6 +259,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Event Listeners ---
 
+  // Handle adding a new category
+  categorySelect.addEventListener("change", () => {
+    if (categorySelect.value === "addNew") {
+      const newCategory = prompt("Enter the name for the new category:");
+      if (newCategory) {
+        // Add to form select
+        const option = new Option(newCategory, newCategory, false, true); // Create and select
+        categorySelect.add(
+          option,
+          categorySelect.options[categorySelect.options.length - 1]
+        );
+
+        // Add to filter select
+        populateFilterCategories();
+      } else {
+        // Reset selection if user cancels
+        categorySelect.value = "";
+      }
+    }
+  });
+
   // Handle new expense submission
   expenseForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -278,29 +307,14 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilters(); // Re-render everything
     populateFilterCategories(); // Update filter options if new category was added
 
+    // Show success message and hide after 3 seconds
+    successMessage.style.display = "block";
+    setTimeout(() => {
+      successMessage.style.display = "none";
+    }, 3000);
+
     expenseForm.reset();
     dateInput.valueAsDate = new Date(); // Reset date to today
-  });
-
-  // Handle adding a new category
-  categorySelect.addEventListener("change", () => {
-    if (categorySelect.value === "addNew") {
-      const newCategory = prompt("Enter the name for the new category:");
-      if (newCategory) {
-        // Add to form select
-        const option = new Option(newCategory, newCategory, false, true); // Create and select
-        categorySelect.add(
-          option,
-          categorySelect.options[categorySelect.options.length - 1]
-        );
-
-        // Add to filter select
-        populateFilterCategories();
-      } else {
-        // Reset selection if user cancels
-        categorySelect.value = "";
-      }
-    }
   });
 
   // Apply filters when selection changes
@@ -318,4 +332,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initialize();
 });
-// End of script.js

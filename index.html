@@ -13,9 +13,13 @@
     </header>
 
     <main class="container">
-      <!-- Add Expense Form -->
       <section class="add-expense">
         <h2>Add New Expense</h2>
+        
+        <div id="successMessage" style="display: none; color: green; margin-bottom: 1rem; text-align: center;">
+          Expense added successfully!
+        </div>
+
         <form id="expenseForm">
           <input type="number" placeholder="Amount (₹)" required />
           <input type="date" required />
@@ -28,6 +32,11 @@
             <option value="Entertainment">Entertainment</option>
             <option value="addNew">➕ Add New Category</option>
           </select>
+          
+          <div id="newCategoryInputContainer" style="display: none;">
+            <input type="text" id="newCategoryInput" placeholder="Enter new category name" />
+          </div>
+
           <input type="text" placeholder="Description (optional)" />
           <button type="submit">Add Expense</button>
         </form>
